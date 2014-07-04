@@ -6,17 +6,14 @@ def get_nav(file_name)
   @ncx = File.new('toc.ncx', 'w+')
   @count = 1
   header
-  #puts @contents_list.class
   parse(@contents_list)
   footer
 end
 
 def parse(list)
-  #puts list.class
   list.element_children.each do | li |
     puts '**********************'
     puts li.first_element_child
-    puts "HERE!!!!" if li.first_element_child.at_css('span') #On the way to figuring it out. Need different behaviors if first child of li is <span> or <a>
     link = li.at_css('a')
     puts link
     id = identify(link['href'])
