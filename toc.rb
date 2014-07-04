@@ -12,10 +12,7 @@ end
 
 def parse(list)
   list.element_children.each do | li |
-    puts '**********************'
-    puts li.first_element_child
     link = li.at_css('a')
-    puts link
     id = identify(link['href'])
     text = link.text if link
     @ncx.puts <<_EOS_
